@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+	<title>Ryukyu Bird Biodiversity</title>
+
+	<!-- D3.js -->	
+    <script src="https://d3js.org/d3.v3.js"></script>
+	
+	<!-- jQuery -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+	
+	<script src="regression.min.js"></script>
+	
+	<script src="scatterplot.js"></script>
+	<script src="scatterplot_sea.js"></script>
+	
+	<script src="data_land.js"></script>
+	<script src="data_sea.js"></script>
+
+	
+	<!-- Open Sans & CSS -->
+	<link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+	  <style>
+		body {
+		  font-family: 'Roboto', sans-serif;
+		  font-size: 14px;
+		  font-weight: 400;
+		  color: #525252;
+		  text-align: center;
+		}
+		
+		html, body { 
+			width:auto; 
+			height:auto; 
+		}
+		.margin30{
+			margin-bottom:30px;
+		}
+		
+		
+		
+		.axis path,
+		.axis line {
+		  fill: none;
+		  stroke: #000;
+		  shape-rendering: crispEdges;
+		}
+		
+		.axisRed line,
+		.axisRed path{
+		  stroke: #D65734;
+		  fill: none;
+		  shape-rendering: crispEdges;
+		}
+
+		
+		.axisRed text{
+		  fill: #D65734;
+		}  
+
+		.dot {
+		  /* stroke: #000; */
+		}
+		
+		.blue{
+			color:#72A8FF;
+		}
+		
+		.green{
+			color:#96BF52;
+		}
+	  </style>
+  </head>
+  <body>
+
+	
+	<div id="cont" class="container-fluid text-center">
+		<h2 class="margin30"> Ryukyu Islands Bird Island Pairwise Distance vs Beta Diversity</h2>
+		<div class="row">
+			<div class = "col-md-4">
+				<h3 class="margin30"> Land bird pairwise distance vs taxonomic</h3>
+				<div id="chart1"></div>
+			</div>
+			<div class = "col-md-4">
+				<h3 class="margin30"> Land bird pairwise distance vs phylogenetic</h3>
+				<div id="chart2"></div>				
+			</div>
+			<div class = "col-md-4">
+				<h3 class="margin30"> Land bird pairwise distance vs functional</h3>
+				<div id="chart3"></div>
+			</div>
+		</div>
+		<div class="row">
+			<div class = "col-md-4">
+				<h3 class="margin30"> Sea bird pairwise distance vs taxonomic</h3>
+				<div id="chart4"></div>
+			</div>
+			<div class = "col-md-4">
+				<h3 class="margin30"> Sea bird pairwise distance vs phylogenetic</h3>
+				<div id="chart5"></div>				
+			</div>
+			<div class = "col-md-4">
+				<h3 class="margin30"> Sea bird pairwise distance vs functional</h3>
+				<div id="chart6"></div>
+			</div>
+		</div>
+		
+		
+		
+	</div>
+
+	<script>
+
+
+
+
+ var chart1 = d3.custom.scatterplot();
+ 
+ chart1._index(0).xlog('linear')
+ 	.yValue('Taxonomic')
+ 	.yLabel('Beta Diversity (Taxonomic)')
+ 	.landsea('Land');
+ 	
+ d3.select('#chart1')
+	.datum(dataLand)
+	.call(chart1); 
+	
+var chart2 = d3.custom.scatterplot();
+
+chart2._index(1).xlog('linear')
+ 	.yValue('Phylogenetic')
+ 	.yLabel('Beta Diversity (Phylogenetic)')
+ 	.landsea('Land');
+ 	
+ d3.select('#chart2')
+	.datum(dataLand)
+	.call(chart2); 
+	
+	
+var chart3 = d3.custom.scatterplot();
+
+chart3._index(2).xlog('linear')
+ 	.yValue('Functional')
+ 	.yLabel('Beta Diversity (Functional)')
+ 	.landsea('Land');
+ 	
+ d3.select('#chart3')
+	.datum(dataLand)
+	.call(chart3); 
+	
+	
+ var chart4 = d3.custom.scatterplot();
+ 
+ chart4._index(3).xlog('linear')
+ 	.yValue('Taxonomic')
+ 	.yLabel('Beta Diversity (Taxonomic)')
+ 	.landsea('Sea');
+ 	
+ d3.select('#chart4')
+	.datum(dataSea)
+	.call(chart4); 
+	
+var chart5 = d3.custom.scatterplot();
+
+chart5._index(4).xlog('linear')
+ 	.yValue('Phylogenetic')
+ 	.yLabel('Beta Diversity (Phylogenetic)')
+ 	.landsea('Sea');
+ 	
+ d3.select('#chart5')
+	.datum(dataSea)
+	.call(chart5); 
+	
+	
+var chart6 = d3.custom.scatterplot();
+
+chart6._index(5).xlog('linear')
+ 	.yValue('Functional')
+ 	.yLabel('Beta Diversity (Functional)')
+ 	.landsea('Sea');
+ 	
+ d3.select('#chart6')
+	.datum(dataSea)
+	.call(chart6); 
+	
+
+	
+
+
+
+	
+
+
+
+</script>
+	
+  </body>
+</html>
